@@ -7,3 +7,36 @@
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
+
+<%= form_with(model: [ @category, Product.new ], local: true) do |form| %>
+
+<% form.hidden_field :category_id, value: @category_id %>
+
+  <div class="campo">
+  	<%= form.label :name %>
+    <%= form.text_field :name, id: :category_name %>
+  </div>
+  <div class="campo">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @category.products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
