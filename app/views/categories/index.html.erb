@@ -1,4 +1,5 @@
-<p id="notice"><%= notice %></p>
+
+  <p id="notice"><%= notice %></p>
 
 <h1>Categories</h1>
 
@@ -13,10 +14,10 @@
   <tbody>
     <% @categories.each do |category| %>
       <tr>
-        <td><%= category.name %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "#{category.name}", category %></td>
+        <td><%= category.products.count %></td>
+        <td><%= link_to 'Edit', edit_category_path(category), :class => 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'New Category', new_category_path, :class => 'btn btn-success' %>
