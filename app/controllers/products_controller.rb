@@ -5,6 +5,11 @@ class ProductsController < ApplicationController
     @product.save
     redirect_to category_path(@product.category_id)
   end
+  def destroy
+  	@product = Product.find(params[:id])
+    @product.destroy
+    redirect_to categories_path
+  end
 
   private
 
